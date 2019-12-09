@@ -1,13 +1,14 @@
 import React from 'react'
 import { StyleSheet, View, TouchableOpacity, Image } from 'react-native'
 export default (props: any) => {
-
-
+    console.log(props.navigation)
     return (
         <View style={styles.menuWrapper}>
-            <TouchableOpacity style={styles.iconWrapper}>
+            <TouchableOpacity 
+                style={styles.iconWrapper} 
+                onPress={() => props.navigation.openDrawer()}>
                 <Image
-                    source={require('../assets/img/icon.png')}    
+                    source={require('../assets/img/icon.png')}                    
                 />
             </TouchableOpacity>
         </View>

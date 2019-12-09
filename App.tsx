@@ -7,8 +7,8 @@
  *
  * @format
  */
-
-import React, {Fragment, useEffect, useState} from 'react';
+import 'react-native-gesture-handler'
+import React, { useEffect } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -20,33 +20,56 @@ import {
 
 import { createStore, applyMiddleware, combineReducers } from 'redux'
 import createSagaMiddleware from 'redux-saga'
+import { createAppContainer } from 'react-navigation';
+import { createDrawerNavigator } from 'react-navigation-drawer'
+
 
 import Header from './components/Header'
 import reducer from './store/reducers'
 import fetchData from './sagas'
+import Content from './components/Content';
+import Bets from './components/Bets'
+import { getDataSuccess } from './store/actions'
 
 const sagaMiddleWare = createSagaMiddleware()
 const store = createStore(
   reducer,
   applyMiddleware(sagaMiddleWare)
 )
-sagaMiddleWare.run(fetchData)
+// sagaMiddleWare.run(fetchData)
 
-const App = () => {
+const Home = (props: any) => {
+  useEffect(() => {
+    fetch('http://www.mocky.io/v2/59f08692310000b4130e9f71')
+    .then(res => res.json())
+    .then(data => {
+      store.dispatch(getDataSuccess(data))
+    })
+  }, [])
+
+  console.log(store.getState(), 'home')
   return (
-    <Fragment>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        {console.log(store.getState())}
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-        </ScrollView>
-      </SafeAreaView>
-    </Fragment>
+    <View>
+      <ScrollView
+        contentInsetAdjustmentBehavior="automatic"
+        style={styles.scrollView}>
+        <Header navigation={props.navigation}/>
+        <Content data={store.getState().data}/>
+      </ScrollView>
+    </View>
   );
 };
+
+const navigator = createDrawerNavigator(
+  {
+    Home
+  },
+  {
+    contentComponent: Bets,
+    drawerPosition: "right"
+
+  }
+)
 
 const styles = StyleSheet.create({
   scrollView: {
@@ -68,4 +91,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default createAppContainer(navigator);
