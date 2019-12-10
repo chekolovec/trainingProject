@@ -1,7 +1,6 @@
 import React from 'react'
 import { StyleSheet, View, TouchableOpacity, Image } from 'react-native'
 export default (props: any) => {
-    console.log(props.navigation)
     return (
         <View style={styles.menuWrapper}>
             <TouchableOpacity 

@@ -1,17 +1,19 @@
 import React from 'react'
 import { StyleSheet, View, Text, Image, TouchableOpacity, Button } from 'react-native'
 
-export default () => {
+export default (props) => {
     return (
         <View style={styles.betItem}>
             <Text style={styles.title}>
-                Man United To WIN
+                {props.name}
             </Text>
             <Text style={styles.coefText}>
-                1.2
+                {props.price}
             </Text>
             <TouchableOpacity
-                onPress={() => {}}
+                onPress={() => {
+                    props.handleDelete({id: props.id})
+                }}
                 style={styles.deleteButton}
             >
                 <Text style={styles.buttonText}>Delete</Text>
