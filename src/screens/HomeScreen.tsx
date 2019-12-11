@@ -1,33 +1,32 @@
-import React, { useEffect } from 'react'
+import React from 'react';
 import {
-  SafeAreaView,
   StyleSheet,
   ScrollView,
   View,
-  Text,
-  StatusBar,
 } from 'react-native';
 
-import Header from '../components/Header'
-import Content from '../components/Content'
+import Header from '../components/Header';
+import Content from '../components/Content';
 
-export default (props: any) => {  
-    return (
-      <View>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header navigation={props.navigation}/>
-          <Content />
-        </ScrollView>
-      </View>
-    );
-  };
-
-  
 const styles = StyleSheet.create({
   scrollView: {
     backgroundColor: '#fff',
   },
-});  
+});
 
+const HomeScreen = (props: any) => {
+  const { navigation } = props;
+  return (
+    <View>
+      <ScrollView
+        contentInsetAdjustmentBehavior="automatic"
+        style={styles.scrollView}
+      >
+        <Header navigation={navigation} />
+        <Content />
+      </ScrollView>
+    </View>
+  );
+};
+
+export default HomeScreen;

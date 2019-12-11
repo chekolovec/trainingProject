@@ -7,29 +7,27 @@
  *
  * @format
  */
-import 'react-native-gesture-handler'
+import 'react-native-gesture-handler';
 import React from 'react';
 
-import { createStore, applyMiddleware, combineReducers } from 'redux'
-import createSagaMiddleware from 'redux-saga'
-import { Provider } from 'react-redux'
+import { createStore, applyMiddleware } from 'redux';
+import createSagaMiddleware from 'redux-saga';
+import { Provider } from 'react-redux';
 
-import reducer from './redux/reducers'
-import AppContainer from './navigators'
+import reducer from './redux/reducers';
+import AppContainer from './navigators';
 
-const sagaMiddleWare = createSagaMiddleware()
+const sagaMiddleWare = createSagaMiddleware();
 const store = createStore(
   reducer,
-  applyMiddleware(sagaMiddleWare)
-)
+  applyMiddleware(sagaMiddleWare),
+);
 
-const App = () => {
-  return (
-    <Provider store={store}>
-      <AppContainer/>
-    </Provider>
-  )
-}
+const App = () => (
+  <Provider store={store}>
+    <AppContainer />
+  </Provider>
+);
 
 
 export default App;

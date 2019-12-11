@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 
 import data from './data';
-import bets from './bets'
+import bets from './bets';
 
 const reducer = combineReducers({
-    data,
-    bets
-})
+  data,
+  bets,
+});
 
-export default reducer
+export default reducer;
