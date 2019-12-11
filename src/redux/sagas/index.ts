@@ -1,13 +1,28 @@
-import { put, call } from 'redux-saga/effects';
-import { getDataSuccess } from '../store/actions';
+import {
+  put, call, all, takeEvery,
+} from 'redux-saga/effects';
 
-export default function* fetchData() {
+import { getDataSuccess } from '../actions';
+import * as types from '../../constants/ActionTypes';
+
+
+function* fetchData() {
   try {
     const data = yield call(() => fetch('http://www.mocky.io/v2/59f08692310000b4130e9f71')
       .then((res) => res.json()));
-    console.log(data);
     yield put(getDataSuccess(data));
+    return true;
   } catch (error) {
-    console.log(error);
+    return false;
   }
+}
+
+function* watchFetchData() {
+  yield takeEvery(types.GET_DATA, fetchData);
+}
+
+export default function* rootSaga() {
+  yield all([
+    watchFetchData(),
+  ]);
 }

@@ -16,12 +16,14 @@ import { Provider } from 'react-redux';
 
 import reducer from './redux/reducers';
 import AppContainer from './navigators';
+import rootSaga from './redux/sagas';
 
-const sagaMiddleWare = createSagaMiddleware();
+const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
   reducer,
-  applyMiddleware(sagaMiddleWare),
+  applyMiddleware(sagaMiddleware),
 );
+sagaMiddleware.run(rootSaga);
 
 const App = () => (
   <Provider store={store}>

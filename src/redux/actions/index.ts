@@ -1,5 +1,9 @@
 import * as types from '../../constants/ActionTypes';
 
+export const getData = () => ({
+  type: types.GET_DATA,
+});
+
 export const getDataSuccess = (data) => ({
   type: types.DATA_RECEIVED,
   data,

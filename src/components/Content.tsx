@@ -57,18 +57,11 @@ const styles = StyleSheet.create({
 
 const Content = (props: any) => {
   const { data } = props;
-  useEffect(() => {
-    fetch('http://www.mocky.io/v2/59f08692310000b4130e9f71')
-      .then((res) => res.json())
-      .then((jsonData) => {
-        props.dataReceived(jsonData);
-      })
-      .catch((err) => new Error(err));
-  }, []);
+  useEffect(() => { props.getData(); }, []);
 
   return (
     <View style={styles.contentWrapper}>
-      {data ? data.map((pos) => {
+      {data.length ? data.map((pos) => {
         if (!pos.markets.length) return null;
         return (
           <View style={styles.gameWrapper} key={pos.name}>
@@ -102,7 +95,8 @@ const Content = (props: any) => {
             ))}
           </View>
         );
-      }) : null}
+      })
+        : <Text style={styles.textCenter}>Loading...</Text>}
     </View>
   );
 };
@@ -113,6 +107,7 @@ const mapStateToProps = (state: { data: any; bets: any; }) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  getData: () => dispatch(actions.getData()),
   dataReceived: (data) => dispatch(actions.getDataSuccess(data)),
   pickBet: (betObj, gameId) => dispatch(actions.toggleBet(betObj, gameId)),
 });
