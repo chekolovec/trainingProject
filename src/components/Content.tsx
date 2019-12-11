@@ -3,6 +3,7 @@ import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 
 import * as types from '../constants/ActionTypes'
+import * as actions from '../redux/actions'
 
 const Content = (props: any) => {
     
@@ -45,7 +46,7 @@ const Content = (props: any) => {
                             } 
                             key={betObject.name}
                             onPress={() => {
-                                props.pickBet(betObject, pos.id, elem.id)
+                                props.pickBet(betObject, pos.id)
                             }
                             }
                             >
@@ -125,13 +126,8 @@ const mapStateToProps = (state: { data: any; bets: any; }) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        dataReceived: (data) => dispatch({type: types.DATA_RECEIVED, data}),
-        pickBet: (betObj, gameId, marketId) => dispatch({
-            type: types.PICK_BET,
-            betObj,
-            gameId: gameId,
-            marketId: marketId
-        })
+        dataReceived: (data) => dispatch(actions.getDataSuccess(data)),
+        pickBet: (betObj, gameId) => dispatch(actions.toggleBet(betObj, gameId))
     }
   }
 

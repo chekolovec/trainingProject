@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 
 import * as types from '../constants/ActionTypes'
 import BetItem from './BetItem'
+import * as actions from '../redux/actions'
 
 const Bets = props => {
     return (
@@ -21,9 +22,9 @@ const Bets = props => {
                 return chosenGame && (
                 <BetItem 
                     name={chosenGame.name}
+                    gameId={chosenGame.Id}
                     key={betObj.id}
-                    price={betObj.price}
-                    id={betObj.id}                   
+                    betObj={betObj}                  
                     handleDelete={props.deleteBet}
                 />
                 )
@@ -51,7 +52,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        deleteBet: id => dispatch({type: types.PICK_BET, betObj: {id}})
+        deleteBet: (bet, gameId) => dispatch(actions.toggleBet(bet, gameId))
     }
 }
 

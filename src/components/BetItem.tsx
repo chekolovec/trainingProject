@@ -8,11 +8,11 @@ export default (props) => {
                 {props.name}
             </Text>
             <Text style={styles.coefText}>
-                {props.price}
+                {props.betObj.price}
             </Text>
             <TouchableOpacity
                 onPress={() => {
-                    props.handleDelete({id: props.id})
+                    props.handleDelete(props.betObj, props.gameId)
                 }}
                 style={styles.deleteButton}
             >

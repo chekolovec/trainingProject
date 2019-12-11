@@ -10,7 +10,8 @@ export const getDataErr = (error) => ({
     error
 })
 
-export const pickBet = (betObj) => ({
-    type: types.PICK_BET,
-    betObj
+export const toggleBet = (betObj, gameId) => ({
+    type: types.TOGGLE_BET,
+    betObj,
+    gameId: gameId
 })

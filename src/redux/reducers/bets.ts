@@ -2,7 +2,7 @@ import * as types from '../../constants/ActionTypes'
 
 export default function reducer(state = [], action) {
     switch(action.type) {
-        case types.PICK_BET:
+        case types.TOGGLE_BET:
             if(state.some((item) => item.id === action.betObj.id)) {
                 return state.filter((item) => item.id !== action.betObj.id)
             } else {
@@ -11,8 +11,6 @@ export default function reducer(state = [], action) {
                     marketId: action.marketId
                 })]
             }
-        case types.DELETE_BET:
-            return state.map((id) => id !== action.id)
         default:
             return state
     }
