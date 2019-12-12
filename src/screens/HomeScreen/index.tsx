@@ -1,20 +1,15 @@
 import React from 'react';
 import {
-  StyleSheet,
   ScrollView,
   View,
 } from 'react-native';
 
-import Header from '../components/Header';
-import Content from '../components/Content';
+import Header from '../../components/Header';
+import Content from '../../components/Content';
+import HomeScreenConfig from './types';
+import styles from './styles';
 
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: '#fff',
-  },
-});
-
-const HomeScreen = (props: any) => {
+const HomeScreen = (props: HomeScreenConfig) => {
   const { navigation } = props;
   return (
     <View>

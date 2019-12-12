@@ -1,21 +1,27 @@
-import * as types from '../../constants/ActionTypes';
+import { getDataSuccessConfig, getDataErrConfig, toggleBetConfig } from './types';
+
+export const GET_DATA = 'GET_DATA';
+export const DATA_RECEIVED = 'DATA_RECEIVED';
+export const DATA_ERROR = 'DATA_ERROR';
+export const TOGGLE_BET = 'TOGGLE_BET';
+
 
 export const getData = () => ({
-  type: types.GET_DATA,
+  type: GET_DATA,
 });
 
-export const getDataSuccess = (data) => ({
-  type: types.DATA_RECEIVED,
+export const getDataSuccess = (data: getDataSuccessConfig) => ({
+  type: DATA_RECEIVED,
   data,
 });
 
-export const getDataErr = (error) => ({
-  type: types.DATA_ERROR,
+export const getDataErr = (error: getDataErrConfig) => ({
+  type: DATA_ERROR,
   error,
 });
 
-export const toggleBet = (betObj, gameId) => ({
-  type: types.TOGGLE_BET,
+export const toggleBet: toggleBetConfig = (betObj, gameId) => ({
+  type: TOGGLE_BET,
   betObj,
   gameId,
 });

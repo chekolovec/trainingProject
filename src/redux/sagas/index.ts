@@ -2,8 +2,7 @@ import {
   put, call, all, takeEvery,
 } from 'redux-saga/effects';
 
-import { getDataSuccess } from '../actions';
-import * as types from '../../constants/ActionTypes';
+import { getDataSuccess, GET_DATA } from '../actions';
 
 
 function* fetchData() {
@@ -18,7 +17,7 @@ function* fetchData() {
 }
 
 function* watchFetchData() {
-  yield takeEvery(types.GET_DATA, fetchData);
+  yield takeEvery(GET_DATA, fetchData);
 }
 
 export default function* rootSaga() {

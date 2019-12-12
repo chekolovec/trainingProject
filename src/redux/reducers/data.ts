@@ -1,8 +1,8 @@
-import * as types from '../../constants/ActionTypes';
+import { DATA_RECEIVED } from '../actions';
 
 function reducer(state = [], action) {
   switch (action.type) {
-    case types.DATA_RECEIVED:
+    case DATA_RECEIVED:
       return action.data;
     default:
       return state;

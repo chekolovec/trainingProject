@@ -1,26 +1,16 @@
 import React from 'react';
 import {
-  StyleSheet, View, Image, TouchableOpacity,
+  View, Image, TouchableOpacity,
 } from 'react-native';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 
-import BetItem from './BetItem';
-import * as actions from '../redux/actions';
+import BetItem from '../BetItem';
+import * as actions from '../../redux/actions';
+import BetsConfig from './types';
+import styles from './styles';
+import { crossIcon } from '../../constants/icons';
 
-const styles = StyleSheet.create({
-  crossWrapper: {
-    display: 'flex',
-    flexDirection: 'row-reverse',
-  },
-  betsContainer: {
-    padding: 20,
-  },
-});
-
-const src = require('../assets/img/cross.png');
-
-const Bets = (props) => {
+const Bets = (props: BetsConfig) => {
   const {
     bets, data, deleteBet, navigation,
   } = props;
@@ -31,14 +21,14 @@ const Bets = (props) => {
         style={styles.crossWrapper}
         onPress={() => closeDrawer()}
       >
-        <Image source={src} />
+        <Image source={crossIcon} />
       </TouchableOpacity>
       {bets.map((betObj) => {
         const chosenGame = data.find((game) => game.id === betObj.gameId);
         return chosenGame && (
         <BetItem
           name={chosenGame.name}
-          gameId={chosenGame.Id}
+          gameId={chosenGame.id}
           key={betObj.id}
           betObj={betObj}
           handleDelete={deleteBet}
@@ -47,20 +37,6 @@ const Bets = (props) => {
       })}
     </View>
   );
-};
-
-Bets.propTypes = {
-  navigation: PropTypes.object,
-  bets: PropTypes.array,
-  data: PropTypes.array,
-  deleteBet: PropTypes.func,
-};
-
-Bets.defaultProps = {
-  navigation: {},
-  bets: [],
-  data: [],
-  deleteBet: () => {},
 };
 
 const mapStateToProps = (state) => ({
