@@ -20,8 +20,9 @@ export const getDataErr = (error: getDataErrConfig) => ({
   error,
 });
 
-export const toggleBet: toggleBetConfig = (betObj, gameId) => ({
+export const toggleBet: toggleBetConfig = (betObj, gameId) => {
+  return ({
   type: TOGGLE_BET,
   betObj,
   gameId,
-});
+})};

@@ -6,10 +6,9 @@ import {
 import styles from './styles';
 import betItemConfig from './types';
 
-const betItem = (props: betItemConfig) => {
-  const { name, handleDelete, gameId } = props;
-  const { betObj } = props;
+const betItem = ({ name, onDelete, gameId, betObj}: betItemConfig) => {
   const { price } = betObj;
+  const handleDelete = () => onDelete(betObj, gameId)
   return (
     <View style={styles.betItem}>
       <Text style={styles.title}>
@@ -19,9 +18,7 @@ const betItem = (props: betItemConfig) => {
         {price}
       </Text>
       <TouchableOpacity
-        onPress={() => {
-          handleDelete(betObj, gameId);
-        }}
+        onPress={handleDelete}
         style={styles.deleteButton}
       >
         <Text style={styles.buttonText}>Delete</Text>

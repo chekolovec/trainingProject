@@ -1,6 +1,6 @@
 export default interface BetItemConfig {
   name: string;
-  handleDelete: Function;
+  onDelete: Function;
   gameId: string;
   betObj: {price: string};
 

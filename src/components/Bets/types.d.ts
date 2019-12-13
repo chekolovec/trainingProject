@@ -1,3 +1,8 @@
+import {
+  NavigationScreenProp,
+  NavigationState,
+} from 'react-navigation';
+
 export default interface BetsConfig {
   bets: Array<{
     id: string;
@@ -18,5 +23,7 @@ export default interface BetsConfig {
     id: string;
   }>;
   deleteBet: Function;
-  navigation: {closeDrawer: Function};
+  navigation: INavigation;
 }
+
+interface INavigation<T extends Object = {}> extends NavigationScreenProp<NavigationState, T> {}

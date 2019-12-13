@@ -4,13 +4,12 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 
-import * as actions from '../../redux/actions';
+import { getData, getDataSuccess, toggleBet } from '../../redux/actions';
 import styles from './styles';
 import ContentConfig from './types';
 
-const Content = (props: ContentConfig) => {
-  const { data } = props;
-  useEffect(() => { props.getData(); }, []);
+const Content = ({ data, getData, bets, pickBet }: ContentConfig) => {
+  useEffect(() => { getData(); }, []);
 
   return (
     <View style={styles.contentWrapper}>
@@ -30,13 +29,13 @@ const Content = (props: ContentConfig) => {
                   {elem.selections.map((betObject) => (
                     <TouchableOpacity
                       style={
-                                props.bets.some((bet) => bet.id === betObject.id)
+                                bets.some((bet) => bet.id === betObject.id)
                                   ? styles.betButtonActive
                                   : styles.betButton
                             }
                       key={betObject.name}
                       onPress={() => {
-                        props.pickBet(betObject, pos.id);
+                        pickBet(betObject, pos.id);
                       }}
                     >
                       <Text>{betObject.name}</Text>
@@ -54,15 +53,15 @@ const Content = (props: ContentConfig) => {
   );
 };
 
-const mapStateToProps = (state: { data: any; bets: any; }) => ({
+const mapStateToProps = (state: { data: Array<object>; bets: Array<object>; }) => ({
   data: state.data,
   bets: state.bets,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  getData: () => dispatch(actions.getData()),
-  dataReceived: (data) => dispatch(actions.getDataSuccess(data)),
-  pickBet: (betObj, gameId) => dispatch(actions.toggleBet(betObj, gameId)),
-});
+const mapDispatchToProps = {
+  getData,
+  dataReceived: getDataSuccess,
+  pickBet: toggleBet,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Content);
