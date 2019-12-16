@@ -1,14 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import {
   View, Text, TouchableOpacity,
 } from 'react-native';
 import { connect } from 'react-redux';
 
-import { getData, getDataSuccess, toggleBet } from '../../redux/actions';
+import { getData, addBet, deleteBet, getDataSuccess } from '../../redux/actions';
 import styles from './styles';
 import ContentConfig from './types';
+import Selection from '../Selection'
 
-const Content = ({ data, getData, bets, pickBet }: ContentConfig) => {
+const Content = ({ data, getData, bets, onAddBet, onDeleteBet }: ContentConfig) => {
   useEffect(() => { getData(); }, []);
 
   return (
@@ -27,20 +28,14 @@ const Content = ({ data, getData, bets, pickBet }: ContentConfig) => {
                 </Text>
                 <View style={styles.buttonsWrapper}>
                   {elem.selections.map((betObject) => (
-                    <TouchableOpacity
-                      style={
-                                bets.some((bet) => bet.id === betObject.id)
-                                  ? styles.betButtonActive
-                                  : styles.betButton
-                            }
-                      key={betObject.name}
-                      onPress={() => {
-                        pickBet(betObject, pos.id);
-                      }}
-                    >
-                      <Text>{betObject.name}</Text>
-                      <Text style={styles.textCenter}>{betObject.price}</Text>
-                    </TouchableOpacity>
+                    <Selection
+                      onAddBet={onAddBet}
+                      onDeleteBet={onDeleteBet}
+                      bets={bets}
+                      gameId={pos.id}
+                      betObject={betObject}
+                      key={betObject.id}
+                    />
                   ))}
                 </View>
               </View>
@@ -60,8 +55,9 @@ const mapStateToProps = (state: { data: Array<object>; bets: Array<object>; }) =
 
 const mapDispatchToProps = {
   getData,
-  dataReceived: getDataSuccess,
-  pickBet: toggleBet,
+  onDataReceived: getDataSuccess,
+  onAddBet: addBet,
+  onDeleteBet: deleteBet,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Content);

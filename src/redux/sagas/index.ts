@@ -4,24 +4,25 @@ import {
 
 import { getDataSuccess, GET_DATA } from '../actions';
 
+const fetchData = (url: string) => 
+  fetch(url)
+  .then((res) => res.json())
 
-function* fetchData() {
+function* getData() {
   try {
-    const data = yield call(() => fetch('http://www.mocky.io/v2/59f08692310000b4130e9f71')
-      .then((res) => res.json()));
+    const data = yield call(fetchData, 'http://www.mocky.io/v2/59f08692310000b4130e9f71');
     yield put(getDataSuccess(data));
-    return true;
   } catch (error) {
-    return false;
+    
   }
 }
 
-function* watchFetchData() {
-  yield takeEvery(GET_DATA, fetchData);
+function* watchGetData() {
+  yield takeEvery(GET_DATA, getData);
 }
 
 export default function* rootSaga() {
   yield all([
-    watchFetchData(),
+    watchGetData(),
   ]);
 }

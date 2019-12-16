@@ -9,18 +9,15 @@ import Content from '../../components/Content';
 import HomeScreenConfig from './types';
 import styles from './styles';
 
-const HomeScreen = (props: HomeScreenConfig) => {
-  const { navigation } = props;
+const HomeScreen = ({ navigation }: HomeScreenConfig) => {
   return (
-    <View>
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={styles.scrollView}
-      >
-        <Header navigation={navigation} />
-        <Content />
-      </ScrollView>
-    </View>
+    <ScrollView
+      contentInsetAdjustmentBehavior="automatic"
+      style={styles.scrollView}
+    >
+      <Header navigation={navigation} />
+      <Content />
+    </ScrollView>
   );
 };
 

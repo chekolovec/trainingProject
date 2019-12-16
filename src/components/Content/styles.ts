@@ -1,11 +1,12 @@
 import { StyleSheet } from 'react-native';
-import colors from '../../constants/colors';
 
 export default StyleSheet.create({
   contentWrapper: {
     paddingTop: 20,
     paddingLeft: 10,
     paddingRight: 10,
+    paddingBottom: 20,
+    flex: 1
   },
   title: {
     textAlign: 'center',
@@ -32,20 +33,5 @@ export default StyleSheet.create({
   },
   textCenter: {
     textAlign: 'center',
-  },
-  betButton: {
-    borderWidth: 1,
-    borderRadius: 3,
-    paddingLeft: 5,
-    paddingRight: 5,
-    borderColor: colors.grey,
-  },
-  betButtonActive: {
-    borderWidth: 1,
-    borderRadius: 3,
-    paddingLeft: 5,
-    paddingRight: 5,
-    borderColor: colors.grey,
-    backgroundColor: colors.green,
   },
 });

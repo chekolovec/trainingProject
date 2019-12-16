@@ -5,12 +5,12 @@ import {
 import { connect } from 'react-redux';
 
 import BetItem from '../BetItem';
-import { toggleBet } from '../../redux/actions';
+import { deleteBet } from '../../redux/actions';
 import BetsConfig from './types';
 import styles from './styles';
 import { crossIcon } from '../../constants/icons';
 
-const Bets = ({ bets, data, deleteBet, navigation }: BetsConfig) => {
+const Bets = ({ bets, data, onDeleteBet, navigation }: BetsConfig) => {
   const { closeDrawer } = navigation;
   return (
     <View style={styles.betsContainer}>
@@ -28,10 +28,10 @@ const Bets = ({ bets, data, deleteBet, navigation }: BetsConfig) => {
             name={chosenGame.name}
             gameId={chosenGame.id}
             betObj={item}
-            onDelete={deleteBet}
+            onDelete={onDeleteBet}
           />
         }}
-        keyExtractor={item => item.id}
+        keyExtractor={(item: { id: string; gameId: string; price: string;}) => item.id}
       />
     </View>
   );
@@ -43,7 +43,7 @@ const mapStateToProps = (state: {data: Array<object>, bets: Array<object>}) => (
 });
 
 const mapDispatchToProps = {
-  deleteBet: toggleBet
+  onDeleteBet: deleteBet
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Bets);

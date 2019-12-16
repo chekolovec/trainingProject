@@ -22,7 +22,7 @@ export default interface BetsConfig {
     name: string;
     id: string;
   }>;
-  deleteBet: Function;
+  onDeleteBet: Function;
   navigation: INavigation;
 }
 

@@ -13,7 +13,8 @@ export default interface ContentConfig {
     id: string;
   }>;
   getData: Function;
-  pickBet: Function;
+  onAddBet: Function;
+  onDeleteBet: Function;
   bets: Array<{
     id: string;
   }>;

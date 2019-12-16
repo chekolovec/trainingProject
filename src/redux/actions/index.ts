@@ -1,9 +1,14 @@
-import { getDataSuccessConfig, getDataErrConfig, toggleBetConfig } from './types';
+import { 
+  getDataSuccessConfig,
+  getDataErrConfig,
+  toggleBetConfig,
+  deleteBetConfig } from './types';
 
 export const GET_DATA = 'GET_DATA';
 export const DATA_RECEIVED = 'DATA_RECEIVED';
 export const DATA_ERROR = 'DATA_ERROR';
-export const TOGGLE_BET = 'TOGGLE_BET';
+export const ADD_BET = 'ADD_BET';
+export const DELETE_BET = 'DELETE_BET'
 
 
 export const getData = () => ({
@@ -20,9 +25,16 @@ export const getDataErr = (error: getDataErrConfig) => ({
   error,
 });
 
-export const toggleBet: toggleBetConfig = (betObj, gameId) => {
+export const addBet: toggleBetConfig = (betObj, gameId) => {
   return ({
-  type: TOGGLE_BET,
+  type: ADD_BET,
   betObj,
   gameId,
 })};
+
+export const deleteBet: deleteBetConfig = (betObj) => {
+  return ({
+    type: DELETE_BET,
+    betObj
+  })
+}

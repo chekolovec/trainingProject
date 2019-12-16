@@ -9,3 +9,7 @@ export interface getDataErrConfig {
 export interface toggleBetConfig {
   (betObj: object, gameId: string)
 }
+
+export interface deleteBetConfig {
+  (betObj: object)
+}

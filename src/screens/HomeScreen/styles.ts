@@ -5,5 +5,6 @@ import colors from '../../constants/colors';
 export default StyleSheet.create({
   scrollView: {
     backgroundColor: colors.white,
+    flex: 1
   },
 });

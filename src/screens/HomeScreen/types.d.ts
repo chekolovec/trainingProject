@@ -1,5 +1,10 @@
+import {
+  NavigationScreenProp,
+  NavigationState,
+} from 'react-navigation';
+
 export default interface HomeScreenConfig {
-  navigation: {
-    openDrawer: Function
-  };
+  navigation: INavigation
 }
+
+interface INavigation<T extends Object = {}> extends NavigationScreenProp<NavigationState, T> {}
