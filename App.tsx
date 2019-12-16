@@ -30,7 +30,7 @@ const App = () => {
   const [isThemeBlack, setIsThemeBlack] = useState(false)
   return (
   <Provider store={store}>
-    <ThemeContext.Provider value={{isThemeBlack, setIsThemeBlack}}>
+    <ThemeContext.Provider value={{ isThemeBlack, setIsThemeBlack }}>
       <AppContainer />
     </ThemeContext.Provider>
   </Provider>

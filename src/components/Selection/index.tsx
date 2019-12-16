@@ -28,14 +28,14 @@ export default ({ bets, betObject, onAddBet, onDeleteBet, gameId }: SelectionCon
       onPress={handleBet(betObject, gameId)}
     >
       <Text style={
-        isThemeBlack ?
-        styles.name :
-        ''
+        isThemeBlack
+        ? styles.name
+        : null
       }>{betObject.name}</Text>
       <Text style={
-        isThemeBlack ?
-        styles.priceBlack :
-        styles.textCenter
+        isThemeBlack
+        ? styles.priceBlack
+        : styles.textCenter
         }>{betObject.price}</Text>
     </TouchableOpacity>
   )

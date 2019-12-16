@@ -1,3 +1,5 @@
 import { createContext } from 'react'
 
-export const ThemeContext = createContext(false)
+import IThemeContext from './types'
+
+export const ThemeContext = createContext<IThemeContext>({isThemeBlack: false})
