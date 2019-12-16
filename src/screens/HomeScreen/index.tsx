@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   ScrollView,
   View,
@@ -8,12 +8,18 @@ import Header from '../../components/Header';
 import Content from '../../components/Content';
 import HomeScreenConfig from './types';
 import styles from './styles';
+import {ThemeContext} from '../../context'
 
 const HomeScreen = ({ navigation }: HomeScreenConfig) => {
+  const { isThemeBlack } = useContext(ThemeContext)
   return (
     <ScrollView
       contentInsetAdjustmentBehavior="automatic"
-      style={styles.scrollView}
+      style={
+        isThemeBlack ?
+        styles.scrollViewBlack :
+        styles.scrollView
+      }
     >
       <Header navigation={navigation} />
       <Content />

@@ -21,4 +21,11 @@ export default StyleSheet.create({
   textCenter: {
     textAlign: 'center',
   },
+  priceBlack: {
+    textAlign: 'center',
+    color: colors.white
+  },
+  name: {
+    color: colors.white
+  }
 })
