@@ -6,7 +6,7 @@ import {ThemeContext} from '../../context'
 
 export default () => {
     const { isThemeBlack, setIsThemeBlack } = useContext(ThemeContext)
-
+    
     return (
     <View style={styles.wrapper}>
         <Switch value={isThemeBlack} onValueChange={() => setIsThemeBlack(!isThemeBlack)}/>

@@ -30,7 +30,8 @@
     "jest-expo": "~36.0.0",
     "jetifier": "~1.6.4",
     "react-navigation-drawer": "^2.3.3",
-    "typescript": "~3.6.3"
+    "tslint": "^5.20.1",
+    "typescript": "^3.7.3"
   },
   "jest": {
     "preset": "react-native"

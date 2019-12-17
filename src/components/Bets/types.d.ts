@@ -1,7 +1,7 @@
 import {
   NavigationScreenProp,
   NavigationState,
-} from 'react-navigation';
+} from "react-navigation";
 
 export default interface BetsConfig {
   bets: Array<{

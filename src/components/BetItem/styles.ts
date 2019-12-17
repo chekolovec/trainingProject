@@ -1,6 +1,6 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
-import colors from '../../constants/colors';
+import colors from "../../constants/colors";
 
 export default StyleSheet.create({
   betItem: {
@@ -9,7 +9,7 @@ export default StyleSheet.create({
     borderBottomWidth: 2,
   },
   title: {
-    textAlign: 'center',
+    textAlign: "center",
     paddingBottom: 10,
   },
   deleteButton: {
@@ -18,14 +18,14 @@ export default StyleSheet.create({
     borderRadius: 5,
     paddingBottom: 5,
     paddingTop: 5,
-    alignSelf: 'center',
+    alignSelf: "center",
   },
   buttonText: {
-    textAlign: 'center',
+    textAlign: "center",
     color: colors.white,
   },
   coefText: {
-    textAlign: 'center',
+    textAlign: "center",
     fontSize: 20,
     paddingBottom: 10,
   },

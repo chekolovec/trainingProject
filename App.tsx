@@ -8,7 +8,7 @@
  * @format
  */
 import 'react-native-gesture-handler';
-import React, { createContext, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 
 import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
@@ -27,10 +27,11 @@ const store = createStore(
 sagaMiddleware.run(rootSaga);
 
 const App = () => {
-  const [isThemeBlack, setIsThemeBlack] = useState(false)
+  const [isThemeBlack, setIsThemeBlack] = useState(false)  
+  const themeValue = useMemo(() => ({isThemeBlack, setIsThemeBlack}), [isThemeBlack, setIsThemeBlack])
   return (
   <Provider store={store}>
-    <ThemeContext.Provider value={{ isThemeBlack, setIsThemeBlack }}>
+    <ThemeContext.Provider value={themeValue}>
       <AppContainer />
     </ThemeContext.Provider>
   </Provider>

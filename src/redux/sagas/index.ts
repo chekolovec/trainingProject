@@ -1,19 +1,19 @@
 import {
-  put, call, all, takeEvery,
-} from 'redux-saga/effects';
+  all, call, put, takeEvery,
+} from "redux-saga/effects";
 
-import { getDataSuccess, GET_DATA } from '../actions';
+import { GET_DATA, getDataSuccess } from "../actions";
 
-const fetchData = (url: string) => 
+const fetchData = (url: string) =>
   fetch(url)
-  .then((res) => res.json())
+  .then((res) => res.json());
 
 function* getData() {
   try {
-    const data = yield call(fetchData, 'http://www.mocky.io/v2/59f08692310000b4130e9f71');
+    const data = yield call(fetchData, "http://www.mocky.io/v2/59f08692310000b4130e9f71");
     yield put(getDataSuccess(data));
   } catch (error) {
-    
+
   }
 }
 

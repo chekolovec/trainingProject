@@ -1,4 +1,4 @@
-import { ADD_BET, DELETE_BET } from '../actions';
+import { ADD_BET, DELETE_BET } from "../actions";
 
 export default (state = [], action) => {
   switch (action.type) {
@@ -8,7 +8,7 @@ export default (state = [], action) => {
         gameId: action.gameId,
         marketId: action.marketId,
       })];
-      
+
     case DELETE_BET:
 
       return state.filter((item) => item.id !== action.betObj.id);

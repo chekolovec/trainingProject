@@ -1,4 +1,4 @@
-import { DATA_RECEIVED } from '../actions';
+import { DATA_RECEIVED } from "../actions";
 
 function reducer(state = [], action) {
   switch (action.type) {

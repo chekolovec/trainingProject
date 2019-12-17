@@ -1,8 +1,8 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet } from "react-native";
 
-import colors from '../../constants/colors'
+import colors from "../../constants/colors";
 
-export default StyleSheet.create({    
+export default StyleSheet.create({
   betButton: {
     borderWidth: 1,
     borderRadius: 3,
@@ -19,13 +19,13 @@ export default StyleSheet.create({
     backgroundColor: colors.green,
   },
   textCenter: {
-    textAlign: 'center',
+    textAlign: "center",
   },
   priceBlack: {
-    textAlign: 'center',
-    color: colors.white
+    textAlign: "center",
+    color: colors.white,
   },
   name: {
-    color: colors.white
-  }
-})
+    color: colors.white,
+  },
+});

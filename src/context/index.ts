@@ -1,5 +1,5 @@
-import { createContext } from 'react'
+import { createContext } from "react";
 
-import IThemeContext from './types'
+import IThemeContext from "./types";
 
-export const ThemeContext = createContext<IThemeContext>({isThemeBlack: false})
+export const ThemeContext = createContext<IThemeContext>({isThemeBlack: false});

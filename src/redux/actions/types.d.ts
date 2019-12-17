@@ -1,15 +1,15 @@
 export interface getDataSuccessConfig {
-  data: object
+  data: object;
 }
 
 export interface getDataErrConfig {
-  err: object
+  err: object;
 }
 
 export interface toggleBetConfig {
-  (betObj: object, gameId: string)
+  (betObj: object, gameId: string);
 }
 
 export interface deleteBetConfig {
-  (betObj: object)
+  (betObj: object);
 }

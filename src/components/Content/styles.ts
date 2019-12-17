@@ -1,6 +1,6 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
-import colors from '../../constants/colors'
+import colors from "../../constants/colors";
 
 export default StyleSheet.create({
   contentWrapper: {
@@ -11,23 +11,23 @@ export default StyleSheet.create({
     flex: 1,
   },
   title: {
-    textAlign: 'center',
+    textAlign: "center",
     paddingTop: 10,
     paddingBottom: 10,
     borderBottomWidth: 1,
   },
   titleBlack: {
-    textAlign: 'center',
+    textAlign: "center",
     paddingTop: 10,
     paddingBottom: 10,
     borderBottomWidth: 1,
-    color: colors.white
+    color: colors.white,
   },
   buttonsWrapper: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    textAlign: 'center',
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    textAlign: "center",
   },
   gameWrapper: {
     paddingLeft: 10,
@@ -42,7 +42,7 @@ export default StyleSheet.create({
     paddingBottom: 20,
     borderWidth: 1,
     marginTop: 20,
-    borderColor: colors.white
+    borderColor: colors.white,
   },
   objective: {
     paddingTop: 5,
@@ -51,9 +51,9 @@ export default StyleSheet.create({
   objectiveBlack: {
     paddingTop: 5,
     paddingBottom: 5,
-    color: colors.white
+    color: colors.white,
   },
   textCenter: {
-    textAlign: 'center',
+    textAlign: "center",
   },
 });

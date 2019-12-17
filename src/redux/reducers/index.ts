@@ -1,7 +1,7 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from "redux";
 
-import data from './data';
-import bets from './bets';
+import bets from "./bets";
+import data from "./data";
 
 const reducer = combineReducers({
   data,

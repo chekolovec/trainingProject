@@ -1,6 +1,6 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
-import colors from '../../constants/colors';
+import colors from "../../constants/colors";
 
 export default StyleSheet.create({
   scrollView: {
@@ -9,6 +9,6 @@ export default StyleSheet.create({
   },
   scrollViewBlack: {
     backgroundColor: colors.black,
-    flex: 1
-  }
+    flex: 1,
+  },
 });
