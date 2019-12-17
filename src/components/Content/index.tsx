@@ -1,25 +1,30 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext, useEffect } from "react";
 import {
-  View, Text, Switch,
-} from 'react-native';
-import { connect } from 'react-redux';
+  Text, View,
+} from "react-native";
+import { connect } from "react-redux";
 
-import { getData, addBet, deleteBet, getDataSuccess } from '../../redux/actions';
-import styles from './styles';
-import ContentConfig from './types';
-import Selection from '../Selection'
-import ThemeSwitch from '../ThemeSwitch';
-import {ThemeContext} from '../../context'
+import {ThemeContext} from "../../context";
+import { addBet, deleteBet, getData, getDataSuccess } from "../../redux/actions";
+import Selection from "../Selection";
+import ThemeSwitch from "../ThemeSwitch";
+import styles from "./styles";
+import ContentConfig from "./types";
+import { BetsContext } from '../../context'
+import withBets from "../../hoc"
+import BetsCounter from "../BetsCounter";
 
 const Content = ({ data, getData, bets, onAddBet, onDeleteBet }: ContentConfig) => {
   useEffect(() => { getData(); }, []);
-  const { isThemeBlack } = useContext(ThemeContext)
+  const { isThemeBlack } = useContext(ThemeContext);
 
   return (
     <View style={styles.contentWrapper}>
       <View>
         {data.length ? data.map((pos) => {
-          if (!pos.markets.length) return null;
+          if (!pos.markets.length) {
+            return null;
+          }
           return (
             <View style={
               isThemeBlack ?
@@ -62,19 +67,22 @@ const Content = ({ data, getData, bets, onAddBet, onDeleteBet }: ContentConfig) 
           : <Text style={styles.textCenter}>Loading...</Text>}
       </View>
       <ThemeSwitch />
+      <BetsContext.Provider value={bets}>
+        <BetsCounter />
+      </BetsContext.Provider>
     </View>
   );
 };
 
-const mapStateToProps = (state: { data: Array<object>; bets: Array<object>; }) => ({
-  data: state.data,
+const mapStateToProps = (state: { data: object[]; bets: object[]; }) => ({
   bets: state.bets,
+  data: state.data,
 });
 
 const mapDispatchToProps = {
   getData,
-  onDataReceived: getDataSuccess,
   onAddBet: addBet,
+  onDataReceived: getDataSuccess,
   onDeleteBet: deleteBet,
 };
 

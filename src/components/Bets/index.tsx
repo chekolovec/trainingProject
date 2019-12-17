@@ -1,14 +1,14 @@
-import React from 'react';
+import React from "react";
 import {
-  View, Image, TouchableOpacity, FlatList
-} from 'react-native';
-import { connect } from 'react-redux';
+  FlatList, Image, TouchableOpacity, View,
+} from "react-native";
+import { connect } from "react-redux";
 
-import BetItem from '../BetItem';
-import { deleteBet } from '../../redux/actions';
-import BetsConfig from './types';
-import styles from './styles';
-import { crossIcon } from '../../constants/icons';
+import { crossIcon } from "../../constants/icons";
+import { deleteBet } from "../../redux/actions";
+import BetItem from "../BetItem";
+import styles from "./styles";
+import BetsConfig from "./types";
 
 const Bets = ({ bets, data, onDeleteBet, navigation }: BetsConfig) => {
   const { closeDrawer } = navigation;
@@ -20,30 +20,30 @@ const Bets = ({ bets, data, onDeleteBet, navigation }: BetsConfig) => {
       >
         <Image source={crossIcon} />
       </TouchableOpacity>
-      <FlatList 
+      <FlatList
         data={bets}
         renderItem={({ item }) => {
-          const chosenGame = data.find((game) => game.id === item.gameId)
-          return <BetItem 
+          const chosenGame = data.find((game) => game.id === item.gameId);
+          return <BetItem
             name={chosenGame.name}
             gameId={chosenGame.id}
             betObj={item}
             onDelete={onDeleteBet}
-          />
+          />;
         }}
-        keyExtractor={(item: { id: string; gameId: string; price: string;}) => item.id}
+        keyExtractor={(item: { id: string; gameId: string; price: string; }) => item.id}
       />
     </View>
   );
 };
 
-const mapStateToProps = (state: {data: Array<object>, bets: Array<object>}) => ({
+const mapStateToProps = (state: {data: object[], bets: object[]}) => ({
   data: state.data,
   bets: state.bets,
 });
 
 const mapDispatchToProps = {
-  onDeleteBet: deleteBet
+  onDeleteBet: deleteBet,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Bets);

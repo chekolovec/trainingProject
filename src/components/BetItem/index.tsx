@@ -1,14 +1,14 @@
-import React from 'react';
+import React from "react";
 import {
-  View, Text, TouchableOpacity,
-} from 'react-native';
+  Text, TouchableOpacity, View,
+} from "react-native";
 
-import styles from './styles';
-import betItemConfig from './types';
+import styles from "./styles";
+import betItemConfig from "./types";
 
 const betItem = ({ name, onDelete, gameId, betObj}: betItemConfig) => {
   const { price } = betObj;
-  const handleDelete = () => onDelete(betObj, gameId)
+  const handleDelete = () => onDelete(betObj, gameId);
   return (
     <View style={styles.betItem}>
       <Text style={styles.title}>

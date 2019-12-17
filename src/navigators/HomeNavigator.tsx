@@ -1,7 +1,7 @@
-import { createDrawerNavigator } from 'react-navigation-drawer';
+import { createDrawerNavigator } from "react-navigation-drawer";
 
-import Bets from '../components/Bets';
-import HomeScreen from '../screens/HomeScreen';
+import Bets from "../components/Bets";
+import HomeScreen from "../screens/HomeScreen";
 
 export default createDrawerNavigator(
   {
@@ -9,6 +9,6 @@ export default createDrawerNavigator(
   },
   {
     contentComponent: Bets,
-    drawerPosition: 'right',
+    drawerPosition: "right",
   },
 );

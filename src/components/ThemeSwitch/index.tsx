@@ -1,12 +1,12 @@
-import React, { useContext } from 'react'
-import { View, Switch, Text } from 'react-native'
+import React, { useContext } from "react";
+import { Switch, Text, View } from "react-native";
 
-import styles from './styles'
-import {ThemeContext} from '../../context'
+import {ThemeContext} from "../../context";
+import styles from "./styles";
 
 export default () => {
-    const { isThemeBlack, setIsThemeBlack } = useContext(ThemeContext)
-    
+    const { isThemeBlack, setIsThemeBlack } = useContext(ThemeContext);
+
     return (
     <View style={styles.wrapper}>
         <Switch value={isThemeBlack} onValueChange={() => setIsThemeBlack(!isThemeBlack)}/>
@@ -15,8 +15,8 @@ export default () => {
             styles.textBlack :
             styles.text
             }>
-            {isThemeBlack ? 'Светлая тема' : 'Темная тема' }
+            {isThemeBlack ? "Светлая тема" : "Темная тема" }
         </Text>
     </View>
-    )
-}
+    );
+};

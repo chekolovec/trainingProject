@@ -30,7 +30,7 @@ export const addBet: toggleBetConfig = (betObj, gameId) => {
   type: ADD_BET,
   betObj,
   gameId,
-});};
+}); };
 
 export const deleteBet: deleteBetConfig = (betObj) => {
   return ({

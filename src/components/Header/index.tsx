@@ -1,14 +1,14 @@
-import React from 'react';
+import React from "react";
 import {
-  View, TouchableOpacity, Image,
-} from 'react-native';
+  Image, TouchableOpacity, View,
+} from "react-native";
 
-import styles from './styles';
-import HeaderConfig from './types';
-import { homeIcon } from '../../constants/icons';
+import { homeIcon } from "../../constants/icons";
+import styles from "./styles";
+import HeaderConfig from "./types";
 
 export default ({ navigation }: HeaderConfig) => {
-  const { openDrawer } = navigation
+  const { openDrawer } = navigation;
   return <View style={styles.menuWrapper}>
     <TouchableOpacity
       style={styles.iconWrapper}
@@ -18,5 +18,5 @@ export default ({ navigation }: HeaderConfig) => {
         source={homeIcon}
       />
     </TouchableOpacity>
-  </View>
+  </View>;
 };
